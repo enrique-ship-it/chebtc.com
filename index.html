@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Acumulando Bitcoin a largo plazo. Transparencia total: DCA semanal + compras fuertes. Horizonte 5-10 años.">
+    <meta name="theme-color" content="#f7931a">
+    <link rel="preconnect" href="https://blockchain.info">
+    <link rel="preconnect" href="https://api.coinbase.com">
     <title>CHE BTC - Acumulando Libertad</title>
     <style>
         * {
@@ -20,9 +24,9 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 30px 20px;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         /* Efecto Che en el fondo */
@@ -45,32 +49,41 @@
         }
 
         .logo {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             margin: 0 auto 30px;
             border: 3px solid #f7931a;
             box-shadow: 0 0 20px rgba(247, 147, 26, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /* Touch target mínimo 44x44px cumplido */
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(247, 147, 26, 0.5);
         }
 
         h1 {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             color: #f7931a;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 3px;
             font-weight: normal;
         }
 
         .tagline {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #888;
             margin-bottom: 50px;
             font-style: italic;
+            line-height: 1.6;
         }
 
         .sats-display {
-            margin: 40px 0;
+            margin: 50px 0;
         }
 
         .sats-number {
@@ -103,9 +116,9 @@
 
         .progress-container {
             width: 100%;
-            height: 40px;
+            height: 44px;
             background: #1a1a1a;
-            border-radius: 20px;
+            border-radius: 22px;
             overflow: hidden;
             position: relative;
             border: 2px solid #333;
@@ -152,8 +165,8 @@
         .stat-card {
             background: #1a1a1a;
             border: 1px solid #333;
-            border-radius: 10px;
-            padding: 20px;
+            border-radius: 12px;
+            padding: 24px 20px;
             transition: transform 0.3s ease;
         }
 
@@ -174,10 +187,133 @@
             text-transform: uppercase;
         }
 
+        .strategy-grid {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .strategy-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 24px 20px;
+            transition: transform 0.3s ease;
+            text-align: left;
+        }
+
+        .strategy-card:hover {
+            transform: translateY(-5px);
+            border-color: #f7931a;
+        }
+
+        .strategy-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .led-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .led-on {
+            background: #5af75a !important;
+            box-shadow: 0 0 10px #5af75a, 0 0 20px #5af75a !important;
+            animation: pulse 2s infinite !important;
+        }
+
+        .led-off {
+            background: #444 !important;
+            box-shadow: none !important;
+            animation: none !important;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .strategy-status {
+            font-size: 0.75rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .strategy-title {
+            font-size: 0.9rem;
+            color: #f7931a;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .strategy-desc {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .price-tracker {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #2a2a2a;
+        }
+
+        .price-label {
+            font-size: 0.7rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .current-price {
+            font-size: 1.2rem;
+            color: #f7931a;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .price-diff {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
         .footer {
             margin-top: 60px;
             font-size: 0.8rem;
             color: #444;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #f7931a;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: #ffb347;
+        }
+
+        .x-logo {
+            width: 20px;
+            height: 20px;
+            filter: invert(66%) sepia(68%) saturate(1613%) hue-rotate(358deg) brightness(102%) contrast(95%);
+        }
+
+        .x-logo:hover {
+            filter: invert(82%) sepia(30%) saturate(1034%) hue-rotate(317deg) brightness(104%) contrast(101%);
         }
 
         .btc-symbol {
@@ -191,26 +327,69 @@
         }
 
         @media (max-width: 600px) {
-            .sats-number {
-                font-size: 2.5rem;
+            body {
+                padding: 20px 16px;
+            }
+            
+            .logo {
+                width: 90px;
+                height: 90px;
             }
             
             h1 {
+                font-size: 1.2rem;
+                letter-spacing: 2px;
+            }
+            
+            .tagline {
+                font-size: 0.85rem;
+                margin-bottom: 40px;
+            }
+            
+            .sats-number {
+                font-size: 2.8rem;
+            }
+            
+            .sats-label {
                 font-size: 1rem;
             }
             
             .stats {
                 grid-template-columns: 1fr;
+                gap: 15px;
+                margin-top: 40px;
+            }
+            
+            .strategy-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin-top: 30px;
+            }
+            
+            .goal-section {
+                margin: 40px 0;
+            }
+            
+            .footer {
+                margin-top: 40px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="logo" id="profilePic" style="background-image: url('che-profile.jpg'); background-size: cover; background-position: center;"></div>
+        <a href="https://x.com/checoinsol" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+            <div class="logo" id="profilePic" style="background-image: url('che-profile.jpg'); background-size: cover; background-position: center;"></div>
+        </a>
         
         <h1>🔥 CHE BTC 🔥</h1>
         <p class="tagline">Acumulando libertad, un satoshi a la vez</p>
+        <p class="tagline" style="margin-top: 20px; color: #888; font-size: 0.85rem; line-height: 1.6; max-width: 600px; margin-left: auto; margin-right: auto;">
+            Acumulo BTC por apuesta de largo plazo (5-10 años): Prefiero el riesgo de estar dentro que mirar desde afuera. 
+            Bitcoin como refugio ante bancos centrales que imprimen sin control.
+            <br><br>
+            <span style="color: #f7931a;">2 formas de acumular: DCA semanal + Compras fuertes en caídas.</span>
+        </p>
 
         <div class="sats-display">
             <div class="sats-number" id="satsAmount">
@@ -247,20 +426,74 @@
             </div>
         </div>
 
+        <div class="strategy-grid">
+            <div class="strategy-card">
+                <div class="strategy-header">
+                    <div class="led-indicator led-on"></div>
+                    <span class="strategy-status">DCA Activo</span>
+                </div>
+                <div class="strategy-title">Compra Semanal</div>
+                <div class="strategy-desc">~$25 USD cada semana sin importar el precio. ~5% de mis ingresos destinados a acumular.</div>
+            </div>
+
+            <div class="strategy-card">
+                <div class="strategy-header">
+                    <div class="led-indicator led-off"></div>
+                    <span class="strategy-status">Compras Fuertes Pausadas</span>
+                </div>
+                <div class="strategy-title">Esperando ~$75k</div>
+                <div class="strategy-desc">Compras grandes cuando RSI < 30 o BTC ≈ $75,000 USD para aprovechar caídas.</div>
+                <div class="price-tracker">
+                    <div class="price-label">Precio de hoy BTC/USD:</div>
+                    <div class="current-price" id="btcPrice">Cargando...</div>
+                    <div class="price-diff" id="priceDiff">...</div>
+                </div>
+            </div>
+        </div>
+
         <div class="footer">
             <p>Actualización automática cada 10 minutos • <span class="btc-symbol">₿</span> Not your keys, not your coins</p>
             <p style="margin-top: 10px;">bc1qedh...a90n • Verificable en blockchain</p>
+            <p style="margin-top: 15px;">
+                <a href="https://x.com/checoinsol" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <svg class="x-logo" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    @checoinsol
+                </a>
+            </p>
         </div>
     </div>
 
     <script>
         const WALLET_ADDRESS = 'bc1qedhuseuc2jd8c2v3k3wf0eu4hk9ykectjpa90n';
         const GOAL_SATS = 21000000;
+        const TARGET_PRICE = 75000;
         const START_DATE = new Date('2025-08-01'); // Fecha de inicio - Primera compra
 
         // Función para formatear números con comas
         function formatNumber(num) {
             return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Función para obtener precio de BTC
+        async function getBTCPrice() {
+            try {
+                const response = await fetch('https://api.coinbase.com/v2/prices/BTC-USD/spot');
+                const data = await response.json();
+                return parseFloat(data.data.amount);
+            } catch (error) {
+                console.error('Error fetching BTC price:', error);
+                // Fallback a CoinGecko
+                try {
+                    const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+                    const data = await response.json();
+                    return data.bitcoin.usd;
+                } catch (err) {
+                    console.error('Error with fallback price API:', err);
+                    return 0;
+                }
+            }
         }
 
         // Función para obtener balance de la wallet
@@ -313,6 +546,48 @@
         async function init() {
             const satoshis = await getBalance();
             updateUI(satoshis);
+            
+            // Actualizar precio de BTC
+            const btcPrice = await getBTCPrice();
+            
+            const led = document.querySelector('.strategy-grid .strategy-card:nth-child(2) .led-indicator');
+            const status = document.querySelector('.strategy-grid .strategy-card:nth-child(2) .strategy-status');
+            
+            console.log('Precio BTC:', btcPrice);
+            console.log('Target:', TARGET_PRICE);
+            
+            if (btcPrice > 0) {
+                document.getElementById('btcPrice').textContent = '$' + formatNumber(Math.round(btcPrice));
+                
+                const diff = TARGET_PRICE - btcPrice;
+                console.log('Diferencia:', diff);
+                
+                // Lógica clara: BTC > 75000 = LED GRIS (apagado)
+                //              BTC <= 75000 = LED VERDE (prendido)
+                if (btcPrice > TARGET_PRICE) {
+                    // Precio MAYOR a $75k - PAUSADO (LED GRIS)
+                    const diffPercent = ((btcPrice - TARGET_PRICE) / btcPrice * 100).toFixed(1);
+                    document.getElementById('priceDiff').textContent = `Faltan $${formatNumber(Math.round(btcPrice - TARGET_PRICE))} de caída (${diffPercent}%)`;
+                    led.classList.remove('led-on');
+                    led.classList.add('led-off');
+                    status.textContent = 'Compras Fuertes Pausadas';
+                    console.log('LED APAGADO - BTC arriba de $75k');
+                } else {
+                    // Precio MENOR O IGUAL a $75k - ACTIVO (LED VERDE)
+                    document.getElementById('priceDiff').textContent = `¡Ya está por debajo del target!`;
+                    led.classList.remove('led-off');
+                    led.classList.add('led-on');
+                    status.textContent = 'Compras Fuertes Activas';
+                    console.log('LED PRENDIDO - BTC en $75k o menos');
+                }
+            } else {
+                // Si no se pudo obtener el precio, asegurar que esté apagado
+                led.classList.remove('led-on');
+                led.classList.add('led-off');
+                status.textContent = 'Compras Fuertes Pausadas';
+                document.getElementById('priceDiff').textContent = 'Error obteniendo precio';
+                console.log('LED APAGADO - Error obteniendo precio');
+            }
         }
 
         // Ejecutar al cargar

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHE BTC - Acumulando Libertad</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efecto Che en el fondo */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(circle at 20% 50%, rgba(0, 100, 0, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            border: 3px solid #f7931a;
+            box-shadow: 0 0 20px rgba(247, 147, 26, 0.3);
+        }
+
+        h1 {
+            font-size: 1.2rem;
+            color: #f7931a;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: normal;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 50px;
+            font-style: italic;
+        }
+
+        .sats-display {
+            margin: 40px 0;
+        }
+
+        .sats-number {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #f7931a;
+            text-shadow: 0 0 30px rgba(247, 147, 26, 0.5);
+            margin-bottom: 10px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .sats-label {
+            font-size: 1.2rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .goal-section {
+            margin: 60px 0;
+        }
+
+        .goal-label {
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 40px;
+            background: #1a1a1a;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid #333;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #f7931a 0%, #ffb347 100%);
+            transition: width 1s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 15px;
+            box-shadow: 0 0 20px rgba(247, 147, 26, 0.5);
+        }
+
+        .progress-text {
+            color: #000;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+
+        .goal-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .goal-target {
+            color: #f7931a;
+            font-weight: bold;
+        }
+
+        .stats {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: #f7931a;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            color: #f7931a;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .footer {
+            margin-top: 60px;
+            font-size: 0.8rem;
+            color: #444;
+        }
+
+        .btc-symbol {
+            color: #f7931a;
+            font-weight: bold;
+        }
+
+        .loading {
+            color: #f7931a;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 600px) {
+            .sats-number {
+                font-size: 2.5rem;
+            }
+            
+            h1 {
+                font-size: 1rem;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo" id="profilePic" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%23f7931a%22/><text x=%2250%22 y=%2265%22 text-anchor=%22middle%22 font-size=%2240%22 fill=%22%23000%22 font-family=%22monospace%22>CHE</text></svg>'); background-size: cover; background-position: center;"></div>
+        
+        <h1>🔥 CHE BTC 🔥</h1>
+        <p class="tagline">Acumulando libertad, un satoshi a la vez</p>
+
+        <div class="sats-display">
+            <div class="sats-number" id="satsAmount">
+                <span class="loading">Cargando...</span>
+            </div>
+            <div class="sats-label">SATOSHIS</div>
+        </div>
+
+        <div class="goal-section">
+            <div class="goal-label">Meta: 21,000,000 sats (0.21 <span class="btc-symbol">₿</span>)</div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar" style="width: 0%">
+                    <span class="progress-text" id="progressText">0%</span>
+                </div>
+            </div>
+            <div class="goal-info">
+                <span>Inicio: Dic 2025</span>
+                <span class="goal-target" id="remaining">21,000,000 sats restantes</span>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value" id="btcValue">0.00000000</div>
+                <div class="stat-label">Bitcoin Total</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="progressPercent">0%</div>
+                <div class="stat-label">Progreso</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="daysElapsed">0</div>
+                <div class="stat-label">Días Acumulando</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Actualización automática cada 10 minutos • <span class="btc-symbol">₿</span> Not your keys, not your coins</p>
+            <p style="margin-top: 10px;">bc1qedh...a90n</p>
+        </div>
+    </div>
+
+    <script>
+        const WALLET_ADDRESS = 'bc1qedhuseuc2jd8c2v3k3wf0eu4hk9ykectjpa90n';
+        const GOAL_SATS = 21000000;
+        const START_DATE = new Date('2025-12-09'); // Fecha de inicio
+
+        // Función para formatear números con comas
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Función para obtener balance de la wallet
+        async function getBalance() {
+            try {
+                const response = await fetch(`https://blockchain.info/q/addressbalance/${WALLET_ADDRESS}`);
+                const satoshis = await response.json();
+                return parseInt(satoshis);
+            } catch (error) {
+                console.error('Error fetching balance:', error);
+                // Fallback a mempool.space
+                try {
+                    const response = await fetch(`https://mempool.space/api/address/${WALLET_ADDRESS}`);
+                    const data = await response.json();
+                    return data.chain_stats.funded_txo_sum - data.chain_stats.spent_txo_sum;
+                } catch (err) {
+                    console.error('Error with fallback API:', err);
+                    return 0;
+                }
+            }
+        }
+
+        // Función para actualizar la UI
+        function updateUI(satoshis) {
+            // Satoshis
+            document.getElementById('satsAmount').textContent = formatNumber(satoshis);
+            
+            // BTC
+            const btc = (satoshis / 100000000).toFixed(8);
+            document.getElementById('btcValue').textContent = btc + ' ₿';
+            
+            // Progreso
+            const progress = Math.min((satoshis / GOAL_SATS) * 100, 100);
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('progressText').textContent = progress.toFixed(2) + '%';
+            document.getElementById('progressPercent').textContent = progress.toFixed(1) + '%';
+            
+            // Restantes
+            const remaining = Math.max(GOAL_SATS - satoshis, 0);
+            document.getElementById('remaining').textContent = formatNumber(remaining) + ' sats restantes';
+            
+            // Días
+            const today = new Date();
+            const diffTime = Math.abs(today - START_DATE);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            document.getElementById('daysElapsed').textContent = diffDays;
+        }
+
+        // Función principal
+        async function init() {
+            const satoshis = await getBalance();
+            updateUI(satoshis);
+        }
+
+        // Ejecutar al cargar
+        init();
+
+        // Actualizar cada 10 minutos
+        setInterval(init, 600000);
+    </script>
+</body>
+</html>

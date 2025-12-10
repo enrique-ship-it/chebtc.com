@@ -85,7 +85,7 @@
 
         .tagline {
             font-size: 0.95rem;
-            color: #888;
+            color: #bbb;
             margin-bottom: 50px;
             font-style: italic;
             line-height: 1.6;
@@ -106,7 +106,7 @@
 
         .sats-label {
             font-size: 1.2rem;
-            color: #666;
+            color: #999;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
@@ -156,7 +156,7 @@
             justify-content: space-between;
             margin-top: 15px;
             font-size: 0.9rem;
-            color: #666;
+            color: #aaa;
         }
 
         .goal-target {
@@ -192,7 +192,7 @@
 
         .stat-label {
             font-size: 0.8rem;
-            color: #666;
+            color: #999;
             text-transform: uppercase;
         }
 
@@ -265,8 +265,8 @@
 
         .strategy-desc {
             font-size: 0.85rem;
-            color: #666;
-            line-height: 1.4;
+            color: #aaa;
+            line-height: 1.5;
         }
 
         .price-tracker {
@@ -277,7 +277,7 @@
 
         .price-label {
             font-size: 0.7rem;
-            color: #666;
+            color: #999;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 5px;
@@ -392,20 +392,22 @@
         </a>
         
         <h1>🔥 CHE BTC 🔥</h1>
-        <p class="tagline">Acumulando libertad, un satoshi a la vez</p>
-        <p class="tagline" style="margin-top: 20px; color: #888; font-size: 0.85rem; line-height: 1.6; max-width: 600px; margin-left: auto; margin-right: auto;">
-            Acumulo BTC por apuesta de largo plazo (5-10 años): Prefiero el riesgo de estar dentro que mirar desde afuera. 
-            Bitcoin como refugio ante bancos centrales que imprimen sin control.
-            <br><br>
-            <span style="color: #f7931a;">2 formas de acumular: DCA semanal + Compras fuertes en caídas.</span>
-        </p>
 
         <div class="sats-display">
+            <div style="font-size: 1rem; color: #ccc; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; font-weight: bold;">ACUMULADOS</div>
             <div class="sats-number" id="satsAmount">
                 <span class="loading">Cargando...</span>
             </div>
             <div class="sats-label">SATOSHIS</div>
         </div>
+
+        <p class="tagline" style="margin-top: 30px; color: #f7931a; font-size: 0.95rem; font-weight: bold;">Meta: 21M sats • Horizonte 5-10 años</p>
+        <p class="tagline" style="margin-top: 15px; color: #bbb; font-size: 0.9rem; line-height: 1.7; max-width: 600px; margin-left: auto; margin-right: auto;">
+            Acumulo BTC por apuesta de largo plazo: Prefiero el riesgo de estar dentro que mirar desde afuera. 
+            Bitcoin como refugio ante la impresión sin control de moneda fiat.
+            <br><br>
+            <span style="color: #f7931a; font-weight: bold;">2 formas de acumular: DCA semanal + Compras fuertes cuando BTC cae.</span>
+        </p>
 
         <div class="goal-section">
             <div class="goal-label">Meta: 21,000,000 sats (0.21 <span class="btc-symbol">₿</span>)</div>
@@ -432,6 +434,7 @@
             <div class="stat-card">
                 <div class="stat-value" id="daysElapsed">0</div>
                 <div class="stat-label">Días Acumulando</div>
+                <div style="font-size: 0.7rem; color: #555; margin-top: 5px;" id="daysContext">desde Ago 2025</div>
             </div>
         </div>
 
@@ -439,19 +442,19 @@
             <div class="strategy-card">
                 <div class="strategy-header">
                     <div class="led-indicator led-on"></div>
-                    <span class="strategy-status">DCA Activo</span>
+                    <span class="strategy-status">Activo</span>
                 </div>
-                <div class="strategy-title">Compra Semanal</div>
+                <div class="strategy-title">DCA Semanal</div>
                 <div class="strategy-desc">~$25 USD cada semana sin importar el precio. ~5% de mis ingresos destinados a acumular.</div>
             </div>
 
             <div class="strategy-card">
                 <div class="strategy-header">
                     <div class="led-indicator led-off"></div>
-                    <span class="strategy-status">Compras Fuertes Pausadas</span>
+                    <span class="strategy-status">Inactivo</span>
                 </div>
-                <div class="strategy-title">Esperando ~$75k</div>
-                <div class="strategy-desc">Compras grandes cuando RSI < 30 o BTC ≈ $75,000 USD para aprovechar caídas.</div>
+                <div class="strategy-title">Compras Agresivas</div>
+                <div class="strategy-desc">Compras grandes cuando BTC caiga a ≈$75,000 USD o RSI < 30 para aprovechar correcciones fuertes.</div>
                 <div class="price-tracker">
                     <div class="price-label">Precio de hoy BTC/USD:</div>
                     <div class="current-price" id="btcPrice">Cargando...</div>
@@ -462,7 +465,11 @@
 
         <div class="footer">
             <p>Actualización automática cada 10 minutos • <span class="btc-symbol">₿</span> Not your keys, not your coins</p>
-            <p style="margin-top: 10px;">bc1qedh...a90n • Verificable en blockchain</p>
+            <p style="margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                <span style="font-family: monospace; font-size: 0.8rem; color: #f7931a;">bc1qedh...a90n</span>
+                <button onclick="copyWallet()" style="background: #f7931a; color: #000; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 0.75rem; font-weight: bold; transition: background 0.3s; text-transform: uppercase;">Copiar Wallet</button>
+            </p>
+            <p style="margin-top: 5px; font-size: 0.75rem; color: #888;">Verificable en blockchain</p>
             <p style="margin-top: 15px;">
                 <a href="https://x.com/checoinsol" target="_blank" rel="noopener noreferrer" class="social-link">
                     <svg class="x-logo" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -575,25 +582,26 @@
                 //              BTC <= 75000 = LED VERDE (prendido)
                 if (btcPrice > TARGET_PRICE) {
                     // Precio MAYOR a $75k - PAUSADO (LED GRIS)
-                    const diffPercent = ((btcPrice - TARGET_PRICE) / btcPrice * 100).toFixed(1);
-                    document.getElementById('priceDiff').textContent = `Faltan $${formatNumber(Math.round(btcPrice - TARGET_PRICE))} de caída (${diffPercent}%)`;
+                    const diffAmount = btcPrice - TARGET_PRICE;
+                    const diffPercent = ((diffAmount / btcPrice) * 100).toFixed(1);
+                    document.getElementById('priceDiff').textContent = `Esperando caída de $${formatNumber(Math.round(diffAmount))} (${diffPercent}%)`;
                     led.classList.remove('led-on');
                     led.classList.add('led-off');
-                    status.textContent = 'Compras Fuertes Pausadas';
+                    status.textContent = 'Inactivo';
                     console.log('LED APAGADO - BTC arriba de $75k');
                 } else {
                     // Precio MENOR O IGUAL a $75k - ACTIVO (LED VERDE)
-                    document.getElementById('priceDiff').textContent = `¡Ya está por debajo del target!`;
+                    document.getElementById('priceDiff').textContent = `✓ BTC en zona de compra fuerte`;
                     led.classList.remove('led-off');
                     led.classList.add('led-on');
-                    status.textContent = 'Compras Fuertes Activas';
+                    status.textContent = 'Activo';
                     console.log('LED PRENDIDO - BTC en $75k o menos');
                 }
             } else {
                 // Si no se pudo obtener el precio, asegurar que esté apagado
                 led.classList.remove('led-on');
                 led.classList.add('led-off');
-                status.textContent = 'Compras Fuertes Pausadas';
+                status.textContent = 'Inactivo';
                 document.getElementById('priceDiff').textContent = 'Error obteniendo precio';
                 console.log('LED APAGADO - Error obteniendo precio');
             }
@@ -604,6 +612,24 @@
 
         // Actualizar cada 10 minutos
         setInterval(init, 600000);
+
+        // Función para copiar wallet
+        function copyWallet() {
+            const wallet = 'bc1qedhuseuc2jd8c2v3k3wf0eu4hk9ykectjpa90n';
+            navigator.clipboard.writeText(wallet).then(() => {
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = '✓ COPIADO';
+                btn.style.background = '#5af75a';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '#f7931a';
+                }, 2000);
+            }).catch(err => {
+                console.error('Error copiando:', err);
+                alert('Wallet: bc1qedhuseuc2jd8c2v3k3wf0eu4hk9ykectjpa90n');
+            });
+        }
     </script>
 </body>
 </html>

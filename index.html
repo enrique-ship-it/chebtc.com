@@ -138,18 +138,23 @@
             height: 100%;
             background: linear-gradient(90deg, #f7931a 0%, #ffb347 100%);
             transition: width 1s ease-out;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding-right: 15px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            border-radius: 22px 0 0 22px;
             box-shadow: 0 0 20px rgba(247, 147, 26, 0.5);
         }
 
         .progress-text {
-            color: #000;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
             font-weight: bold;
             font-size: 0.9rem;
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            transition: color 0.3s;
         }
 
         .goal-info {
@@ -420,9 +425,8 @@
         <div class="goal-section">
             <div class="goal-label">Meta: 21,000,000 sats (0.21 <span class="btc-symbol">₿</span>)</div>
             <div class="progress-container">
-                <div class="progress-bar" id="progressBar" style="width: 0%">
-                    <span class="progress-text" id="progressText">0%</span>
-                </div>
+                <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+                <span class="progress-text" id="progressText">0%</span>
             </div>
             <div class="goal-info">
                 <span>Inicio: Ago 2025</span>
@@ -553,6 +557,13 @@
             document.getElementById('progressBar').style.width = progress + '%';
             document.getElementById('progressText').textContent = progress.toFixed(2) + '%';
             document.getElementById('progressPercent').textContent = progress.toFixed(1) + '%';
+            // Cambia el color del texto según el avance
+            const progressText = document.getElementById('progressText');
+            if (progress >= 50) {
+                progressText.style.color = '#000';
+            } else {
+                progressText.style.color = '#f7931a';
+            }
             
             // Restantes
             const remaining = Math.max(GOAL_SATS - satoshis, 0);
